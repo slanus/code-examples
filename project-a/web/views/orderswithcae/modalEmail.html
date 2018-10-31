@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h3 class="m-t-none m-b">{{ 'SENDMAIL' | translate }}</h3>
+</div>
+<div class="modal-body">
+  <div class="row">
+      <div class="col-md-12">
+          <send-email emails="emails" added-email="addedEmail" selected-emails="selectedEmails" ng-show="loadEmails"></send-email>
+      </div>
+  </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-sm btn-primary pull-right m-t-n-xs ladda-button ladda-button-demo" ng-click="resendEmails()" ladda="loading || submitting" ng-disabled="submitting || loading" data-style="zoom-in"><strong>{{ 'RESENDEMAIL' | translate}}</strong></button>
+    <button class="btn btn-sm pull-right m-t-n-xs" ng-click="cancel()" style="margin-right:5px;"><strong>{{ 'CANCEL' | translate }}</strong></button>
+</div>

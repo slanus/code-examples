@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-4"><strong>{{ 'ATTACHMENTS' | translate }}</strong></div>
+  <div class="col-md-8">    
+    <div ng-show="loading">{{ 'LOADING' | translate }}</div>
+    <table ng-show="!loading">
+      <tr ng-repeat="file in files track by file.name">
+        <td>
+          <input ng-if="allowSelection" type="checkbox" value="{{file.name}}" ng-model="file.selected">
+          <a href="{{file.url}}" target="_blank">{{file.name}}</a></td>
+      </tr>
+      <tr ng-if="files.length === 0">
+        <td>{{ 'NOATTACHMENTS' | translate }}</td>
+      </tr>
+    </table>
+    <br>
+    <table ng-if="allowUpload">
+      <tr>        
+        <td>
+            <input id="fileInput" onchange="angular.element(this).scope().uploadFile()" ng-disabled="loading" type="file" class="form-control" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*" />
+        </td>
+        <td>
+            <img src="/img/atlas-gif-load.gif" ng-show="loading" style="margin-left:5px;" />
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

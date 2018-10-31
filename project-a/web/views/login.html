@@ -1,0 +1,25 @@
+﻿<div class="middle-box text-center loginscreen  animated fadeInDown" ng-controller="loginCtrl">
+  <div>
+    <div>
+      <img class=" logo-big-size " ng-src="{{bigLogo}}.png"><br><br><br>
+    </div>
+    <p>{{ 'MESSAGELOGIN' | translate }}</p>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form class="m-t" role="form" onsubmit="return false;">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="{{ 'USERNAME' | translate }}" data-ng-model="loginData.userName"
+              required autofocus>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="{{ 'PASSWORD' | translate }}" data-ng-model="loginData.password"
+              required>
+          </div>
+          <button type="submit" class="btn btn-primary block full-width m-b " ng-disabled="disabled" ng-click="login()">{{
+            'LOGIN' | translate }}</button>
+          <div class="alert alert-danger ng-binding login-danger" ng-if="message!==''">{{message}}</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
