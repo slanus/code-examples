@@ -1,0 +1,80 @@
+<div class="ibox float-e-margins ibox-report">
+    <div class="ibox-title">
+        <h3>Portfolio Documents</h3>
+        <div class="input-group">
+          <input type="text" class="form-control pull-right" ng-model="pd.filter" />
+          <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        </div>
+    </div>
+    <div class="ibox-content" spinner="pd.showSpinner">
+        <wj-flex-grid class="full-height"
+                      items-source="pd.data"
+                      is-read-only="true"
+                      selection-mode="None"
+                      headers-visibility="Column"
+                      initialized="pd.initGrid(s,a)"
+                      control="pd.flex">
+            <wj-flex-grid-column header="Policy ID"
+                                 binding="ExternalId"
+                                 min-width="120"
+                                 align="left">
+                {{$item.ExternalId | hyphen}}
+            </wj-flex-grid-column>
+            <wj-flex-grid-column header="Insured Name"
+                                 binding="InsuredNameLastFirst"
+                                 min-width="180"
+                                 width="*">
+            </wj-flex-grid-column>
+            <wj-flex-grid-column header="Group"
+                                 binding="ExternalGroup"
+                                 min-width="120"
+                                 align="left">
+                {{$item.ExternalGroup | hyphen}}
+            </wj-flex-grid-column>
+            <wj-flex-grid-column header="Carrier"
+                                 binding="INSURANCECOMPANY"
+                                 min-width="150"
+                                 width="*">
+            </wj-flex-grid-column>
+            <wj-flex-grid-column header="Policy"
+                                 binding="POLICYNUMBER"
+                                 min-width="150"
+                                 width="*">
+            </wj-flex-grid-column>
+            <wj-flex-grid-column header="Document Type"
+                                 binding="DocType"
+                                 min-width="200"
+                                 width="*">
+            </wj-flex-grid-column>
+            <wj-flex-grid-column header="Sync Date"
+                                 binding="SyncDate"
+                                 data-type="date"
+                                 format="MM/dd/yyyy"
+                                 min-width="150"
+                                 align="center"
+                                 width="*">
+            </wj-flex-grid-column>
+            <wj-flex-grid-column header="Notes"
+                                 binding="Notes"
+                                 min-width="150"
+                                 align="left"
+                                 width="*">
+            </wj-flex-grid-column>
+            <wj-flex-grid-column header="Download"
+                                 binding=""
+                                 align="center"
+                                 min-width="150"
+                                 width="*">
+                <a ng-if="$item.ExistsFile" ng-click="pd.download($item.DocumentID)"><i class="fa fa-download" aria-hidden="true"></i></a>
+                <i ng-if="!$item.ExistsFile" class="fa fa-download disabled" aria-hidden="true"></i>
+
+            </wj-flex-grid-column>
+        </wj-flex-grid>
+
+        <div class="text-right pager-box">
+          <span class="ng-binding">{{pd.data.totalItemCount}} entries</span>
+          <!-- <wj-collection-view-pager cv="pd.data"></wj-collection-view-pager> -->
+        </div>
+
+    </div>
+</div>

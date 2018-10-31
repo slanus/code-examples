@@ -1,0 +1,37 @@
+<div class="ibox float-e-margins">
+    <div class="ibox-title">
+        <span class="pull-right entries" ng-show="ph.data">{{ph.data._src.length}} entries</span>
+        <h3>Premium History</h3>
+    </div>
+    <div class="ibox-content" spinner="ph.showSpinner">
+        <wj-flex-grid items-source="ph.data"
+                      is-read-only="true"
+                      selection-mode="None"
+                      headers-visibility="Column"
+                      initialized="ph.initGrid(s,a)">
+            <wj-flex-grid-column header="Date Paid"
+                                 binding="DATE_ADDL_PREM_PAID"
+                                 align="right"
+                                 width="*">
+                {{$item.DATE_ADDL_PREM_PAID | date:'MM/dd/yyyy'}}
+            </wj-flex-grid-column>
+            <wj-flex-grid-column header="Amount Paid"
+                                 binding="AMOUNT_PAID"
+                                 data-type="Number"
+                                 aggregate="Sum"
+                                 align="right"
+                                 width="*">
+                {{$item.AMOUNT_PAID | number:2}}
+                <wj-flex-grid-cell-template cell-type="ColumnFooter">
+                    {{$value | number:2}}
+                </wj-flex-grid-cell-template>
+            </wj-flex-grid-column>
+            <wj-flex-grid-column header="Confirm Date"
+                                 binding="DATE_CONFIRMED_PAYMENT"
+                                 align="right"
+                                 width="*">
+                {{$item.DATE_CONFIRMED_PAYMENT | date:'MM/dd/yyyy'}}
+            </wj-flex-grid-column>
+        </wj-flex-grid>
+    </div>
+</div>

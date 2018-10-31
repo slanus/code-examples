@@ -1,0 +1,34 @@
+<div class="ibox float-e-margins ibox-report">
+    <div class="ibox-content" spinner="lh.showSpinner">
+        <wj-flex-grid items-source="lh.data"
+                      is-read-only="true"
+                      selection-mode="None"
+                      headers-visibility="Column"
+                      initialized="lh.initGrid(s,a)"
+                      control="lh.flex">
+            <wj-flex-grid-column header="Date"
+                                 binding="LogDateLocalTime"
+                                 css-class="text-highlight"
+                                 data-type="date"
+                                 width="4*">
+            </wj-flex-grid-column>
+
+            <wj-flex-grid-column header="User"
+                                 binding="UserID"
+                                 width="6*">
+            </wj-flex-grid-column>
+            <wj-flex-grid-column header="IP Address"
+                                 binding="Hostname"
+                                 width="4*">
+            </wj-flex-grid-column>
+            <wj-flex-grid-column header="Log Message"
+                                 binding="LogMessage"
+                                 width="8*">
+            </wj-flex-grid-column>
+            <wj-flex-grid-column header="Status"
+                                 binding="FriendlyStatus"
+                                 width="4*">
+            </wj-flex-grid-column>
+       </wj-flex-grid>
+    </div>
+</div>
